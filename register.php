@@ -13,9 +13,9 @@ $age=$_POST['age'];
 $mob=$_POST['mob'];
 $gender=$_POST['gender'];
 $email=$_POST['email'];
-$pw=$_POST['pw'];
-$cpw=$_POST['cpw'];
-$sql = "INSERT INTO passengers (p_fname, p_lname, p_age, p_contact, p_gender, email, password) VALUES ('$fname', '$lname', '$age', '$mob', '$gender', '$email', '$pw');";
+$pw=base64_encode($_POST['pw']);
+$cpw=base64_encode($_POST['cpw']);
+$sql = "INSERT INTO passengers SET p_fname = '".$fname."', p_lname = '".$lname."', p_age = '".$age."', p_contact = '".$mob."', p_gender = '".$gender."', email = '".$email."', password = '".$pw."'";
 	if(mysqli_query($conn, $sql))
 {  
 	$message = "You have been successfully registered";
